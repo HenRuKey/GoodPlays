@@ -2,7 +2,8 @@
 
 namespace GoodPlaysLib
 {
-    public class Class1
+    public class Game
     {
+
     }
 }
