@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace GoodPlaysLib.models
 {
@@ -9,6 +10,10 @@ namespace GoodPlaysLib.models
         public string Summary { get; set; }
         public override string ToString() {
             return $"{Id}: {Name}";
+        }
+
+        public static string FieldNames() {
+            return typeof(Game).GetProperties().Select(p => p.Name.ToLower()).Aggregate((res, n) => $"{res},{n}");
         }
     }
 }

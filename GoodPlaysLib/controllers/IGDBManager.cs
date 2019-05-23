@@ -26,7 +26,21 @@ namespace GoodPlaysLib.controllers
                     idList.Append(',');
                 }
             }
-            string jsonResponse = ResponseToJson(MakeRequest("games", $"fields name,summary; where id=({idList})"));
+            string requestBody = $"fields {Game.FieldNames()};" +
+                                 $"where id=({idList});";
+            string jsonResponse = ResponseToJson(MakeRequest("games", requestBody));
+            return new JavaScriptSerializer().Deserialize<Game[]>(jsonResponse);
+        }
+
+        /// <summary>
+        /// Searches IGDB games by name
+        /// </summary>
+        /// <param name="name">The name to search with.</param>
+        /// <returns>The results of the search.</returns>
+        public Game[] SearchGamesByName(string name) {
+            string requestBody = $"fields {Game.FieldNames()};" +
+                                 $"search \"{name}\";";
+            string jsonResponse = ResponseToJson(MakeRequest("games", $"fields name,summary; search \"{name}\";"));
             return new JavaScriptSerializer().Deserialize<Game[]>(jsonResponse);
         }
 
