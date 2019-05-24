@@ -27,9 +27,21 @@ namespace GoodPlaysLib.controllers
                 }
             }
             string requestBody = $"fields {Game.FieldNames()};" +
-                                 $"where id=({idList});";
+                                 $"where id = ({idList}) & category = 0;";
             string jsonResponse = ResponseToJson(MakeRequest("games", requestBody));
             return new JavaScriptSerializer().Deserialize<Game[]>(jsonResponse);
+        }
+
+        /// <summary>
+        /// Finds a single game by its id.
+        /// </summary>
+        /// <param name="id">The id of the game to find.</param>
+        /// <returns>The game with the id specified.</returns>
+        public Game GameFromId(int id) {
+            string requestBody = $"fields {Game.FieldNames()};" +
+                                 $"where id = {id} & category = 0;";
+            string jsonResponse = ResponseToJson(MakeRequest("games", requestBody));
+            return new JavaScriptSerializer().Deserialize<Game>(jsonResponse);
         }
 
         /// <summary>
@@ -39,8 +51,9 @@ namespace GoodPlaysLib.controllers
         /// <returns>The results of the search.</returns>
         public Game[] SearchGamesByName(string name) {
             string requestBody = $"fields {Game.FieldNames()};" +
-                                 $"search \"{name}\";";
-            string jsonResponse = ResponseToJson(MakeRequest("games", $"fields name,summary; search \"{name}\";"));
+                                 $"search \"{name}\";" +
+                                  "where category = 0;";
+            string jsonResponse = ResponseToJson(MakeRequest("games", requestBody));
             return new JavaScriptSerializer().Deserialize<Game[]>(jsonResponse);
         }
 
