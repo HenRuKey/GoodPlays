@@ -62,6 +62,17 @@ namespace GoodPlaysEF.services {
         }
 
         /// <summary>
+        /// Retrieves a list of all users who have a specified game in their list.
+        /// </summary>
+        /// <param name="gameID"></param>
+        /// <returns></returns>
+        public List<User> GetUsersByGame(int gameID) {
+            using (var context = new GoodPlaysEntities()) {
+                return context.ListItems.Where(li => li.GameID == gameID).Select(li => li.User).Distinct().ToList();
+            }
+        }
+
+        /// <summary>
         /// Retrieves a list item by its ID.
         /// </summary>
         /// <param name="listItemId">The list item's ID.</param>
@@ -120,11 +131,73 @@ namespace GoodPlaysEF.services {
         #endregion
 
         #region Update
+        /// <summary>
+        /// Updates the values of a user with a specific ID.
+        /// </summary>
+        /// <param name="userID">The ID of the user to be updated.</param>
+        /// <param name="firstName">The new value of the user's first name.</param>
+        /// <param name="lastName">The new value of the user's last name.</param>
+        /// <param name="email">The new value of the user's email address.</param>
+        public void UpdateUserById(string userID, string firstName = null, string lastName = null, string email = null) {
+            using (var context = new GoodPlaysEntities()) {
+                User user = context.Users.Single(u => u.UserID == userID);
+                user.FirstName = firstName ?? user.FirstName;
+                user.LastName = lastName ?? user.LastName;
+                user.Email = email ?? user.Email;
+                context.SaveChanges();
+            }
+        }
 
+        /// <summary>
+        /// Updates the values of a list item with a specific ID.
+        /// </summary>
+        /// <param name="listItemID">The ID of the list item to be updated.</param>
+        /// <param name="listType">The new list type.</param>
+        /// <param name="gameID">The new game ID.</param>
+        public void UpdateListItemById(int listItemID, int? listType = null, int? gameID = null) {
+            using (var context = new GoodPlaysEntities()) {
+                ListItem listItem = context.ListItems.Single(li => li.ListItemID == listItemID);
+                listItem.ListType = listType ?? listItem.ListType;
+                listItem.GameID = gameID ?? listItem.GameID;
+                context.SaveChanges();
+            }
+        }
         #endregion
 
         #region Delete
+        /// <summary>
+        /// Deletes a single user with a specific ID.
+        /// </summary>
+        /// <param name="userID">The ID of the user to be deleted.</param>
+        public void DeleteUserByID(string userID) {
+            using (var context = new GoodPlaysEntities()) {
+                context.Users.Remove(context.Users.Single(u => u.UserID == userID));
+                context.SaveChanges();
+            }
+        }
 
+        /// <summary>
+        /// Deletes a single list item with a specific ID.
+        /// </summary>
+        /// <param name="listItemID">The ID of the list item to be deleted.</param>
+        public void DeleteListItemByID(int listItemID) {
+            using (var context = new GoodPlaysEntities()) {
+                context.ListItems.Remove(context.ListItems.Single(li => li.ListItemID == listItemID));
+                context.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// Deletes all list items that reference a specific user's ID.
+        /// </summary>
+        /// <param name="userID">The ID of the user whose list will be deleted.</param>
+        public void DeleteListByUserID(string userID) {
+            using (var context = new GoodPlaysEntities()) {
+                User user = context.Users.Single(u => u.UserID == userID);
+                user.ListItems.Clear();
+                context.SaveChanges();
+            }
+        }
         #endregion
     }
 }
