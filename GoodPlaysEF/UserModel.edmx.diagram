@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0240b9669e9d4ebd9d9b6fac52e51b01" Name="Diagram1">
+      <Diagram DiagramId="87fdffc9c63742b7a0944f73cd4efd39" Name="Diagram1">
         <EntityTypeShape EntityType="GoodPlaysModel.ListItem" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="GoodPlaysModel.ListType" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="GoodPlaysModel.User" Width="1.5" PointX="5.375" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="GoodPlaysModel.FK__ListItem__ListTy__3C69FB99" ManuallyRouted="false" />
-        <AssociationConnector Association="GoodPlaysModel.FK__ListItem__UserID__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="GoodPlaysModel.FK__ListItem__ListTy__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="GoodPlaysModel.FK__ListItem__UserID__3F466844" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

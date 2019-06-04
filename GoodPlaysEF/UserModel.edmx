@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="GoodPlaysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="GoodPlaysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ListItem">
           <Key>
             <PropertyRef Name="ListItemID" />
@@ -67,7 +67,8 @@
             <End Role="ListItem" EntitySet="ListItem" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GoodPlaysModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -79,8 +80,8 @@
           <Property Name="UserID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ListType" Type="Int32" Nullable="false" />
           <Property Name="GameID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ListType1" Relationship="Self.FK__ListItem__ListTy__3C69FB99" FromRole="ListItem" ToRole="ListType" />
-          <NavigationProperty Name="User" Relationship="Self.FK__ListItem__UserID__3B75D760" FromRole="ListItem" ToRole="User" />
+          <NavigationProperty Name="ListType1" Relationship="Self.FK__ListItem__ListTy__403A8C7D" FromRole="ListItem" ToRole="ListType" />
+          <NavigationProperty Name="User" Relationship="Self.FK__ListItem__UserID__3F466844" FromRole="ListItem" ToRole="User" />
         </EntityType>
         <EntityType Name="ListType">
           <Key>
@@ -88,7 +89,7 @@
           </Key>
           <Property Name="ListTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ListTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ListItems" Relationship="Self.FK__ListItem__ListTy__3C69FB99" FromRole="ListType" ToRole="ListItem" />
+          <NavigationProperty Name="ListItems" Relationship="Self.FK__ListItem__ListTy__403A8C7D" FromRole="ListType" ToRole="ListItem" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -98,9 +99,9 @@
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ListItems" Relationship="Self.FK__ListItem__UserID__3B75D760" FromRole="User" ToRole="ListItem" />
+          <NavigationProperty Name="ListItems" Relationship="Self.FK__ListItem__UserID__3F466844" FromRole="User" ToRole="ListItem" />
         </EntityType>
-        <Association Name="FK__ListItem__ListTy__3C69FB99">
+        <Association Name="FK__ListItem__ListTy__403A8C7D">
           <End Role="ListType" Type="Self.ListType" Multiplicity="1" />
           <End Role="ListItem" Type="Self.ListItem" Multiplicity="*" />
           <ReferentialConstraint>
@@ -112,7 +113,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ListItem__UserID__3B75D760">
+        <Association Name="FK__ListItem__UserID__3F466844">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="ListItem" Type="Self.ListItem" Multiplicity="*" />
           <ReferentialConstraint>
@@ -128,11 +129,11 @@
           <EntitySet Name="ListItems" EntityType="Self.ListItem" />
           <EntitySet Name="ListTypes" EntityType="Self.ListType" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK__ListItem__ListTy__3C69FB99" Association="Self.FK__ListItem__ListTy__3C69FB99">
+          <AssociationSet Name="FK__ListItem__ListTy__403A8C7D" Association="Self.FK__ListItem__ListTy__403A8C7D">
             <End Role="ListType" EntitySet="ListTypes" />
             <End Role="ListItem" EntitySet="ListItems" />
           </AssociationSet>
-          <AssociationSet Name="FK__ListItem__UserID__3B75D760" Association="Self.FK__ListItem__UserID__3B75D760">
+          <AssociationSet Name="FK__ListItem__UserID__3F466844" Association="Self.FK__ListItem__UserID__3F466844">
             <End Role="User" EntitySet="Users" />
             <End Role="ListItem" EntitySet="ListItems" />
           </AssociationSet>

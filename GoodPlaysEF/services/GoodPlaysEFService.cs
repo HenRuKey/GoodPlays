@@ -193,8 +193,8 @@ namespace GoodPlaysEF.services {
         /// <param name="userID">The ID of the user whose list will be deleted.</param>
         public void DeleteListByUserID(string userID) {
             using (var context = new GoodPlaysEntities()) {
-                User user = context.Users.Single(u => u.UserID == userID);
-                user.ListItems.Clear();
+                List<ListItem> listItems = context.ListItems.Where(li => li.UserID == userID).ToList();
+                listItems.ForEach(li => context.ListItems.Remove(li));
                 context.SaveChanges();
             }
         }

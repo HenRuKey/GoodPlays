@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7421A4E0-F31A-4232-9E3B-ADD7C2BEF688}</ProjectGuid>
+    <ProjectGuid>{3FFE65F3-11C3-4DE0-84E5-4920854A3A5C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GoodPlaysEF</RootNamespace>
@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="services\GoodPlaysEFService.cs" />
     <Compile Include="ListItem.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
@@ -57,7 +58,6 @@
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="services\GoodPlaysEFService.cs" />
     <Compile Include="User.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
