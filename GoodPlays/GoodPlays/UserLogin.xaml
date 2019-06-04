@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GoodPlays.UserLogin">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Sign Up" Clicked="SignUpButton"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="StartAndExpand">
+            <Label Text="Username"/>
+            <Entry x:Name="entry_username" Placeholder="Username"/>
+            <Label Text="Password"/>
+            <Entry x:Name="entry_password" IsPassword="True"/>
+            <Button Text="Login" Clicked="LoginButton"/>
+            <Label x:Name="label_message"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

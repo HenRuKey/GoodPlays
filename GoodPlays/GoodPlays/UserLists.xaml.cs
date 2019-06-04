@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace GoodPlays
 {
-    public partial class MainPage : ContentPage
-    {
-        public MainPage()
-        {
-            InitializeComponent();
-        }
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class UserLists : ContentPage
+	{
+		public UserLists ()
+		{
+			InitializeComponent ();
+		}
 
         async void LogoutButton(object sender, EventArgs e)
         {
@@ -27,9 +30,9 @@ namespace GoodPlays
             await Navigation.PopAsync();
         }
 
-        async void UserProfile(object sender, EventArgs e)
+        async void Main(object sender, EventArgs e)
         {
-            Navigation.InsertPageBefore(new UserLists(), this);
+            Navigation.InsertPageBefore(new MainPage(), this);
             await Navigation.PopAsync();
         }
     }

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2AE16175-A465-49FD-848F-4B6D7C488A02}</ProjectGuid>
+    <ProjectGuid>{22CACFCF-4B3B-4A6E-9964-E00C715971AF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GoodPlaysLib</RootNamespace>
